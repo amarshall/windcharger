@@ -42,6 +42,16 @@ describe "readme" do
           :walked_into_a_bar
         end
 
+        def qux
+          1
+        end
+
+        attribute :qax, :qux
+
+        def qax
+          2
+        end
+
         def not_an_attribute
           42
         end
@@ -54,7 +64,12 @@ describe "readme" do
 
     it "works" do
       my_transformer = MyTransformer.new
-      expect(my_transformer.transform).to eq({ :foo => :the_foo, :bar => :walked_into_a_bar })
+      expect(my_transformer.transform).to eq({
+        :foo => :the_foo,
+        :bar => :walked_into_a_bar,
+        :qax => 2,
+        :qux => 1,
+      })
     end
   end
 end

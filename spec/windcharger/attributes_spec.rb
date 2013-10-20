@@ -12,6 +12,15 @@ describe Windcharger::Attributes do
     expect { transformer_class.attribute }.to raise_error NoMethodError, /private/
   end
 
+  it "adds attributes to the list, not affecting the next method added, when attribute is called with params" do
+    transformer_class = Class.new do
+      extend Windcharger::Attributes
+      attribute :foo, :bar
+      def baz; end
+    end
+    expect(transformer_class.attributes).to eq [:foo, :bar]
+  end
+
   it "does not add a method not preceded by a call to attribute to the list of attributes" do
     transformer_class = Class.new do
       extend Windcharger::Attributes

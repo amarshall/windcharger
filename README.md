@@ -53,13 +53,29 @@ class MyTransformer
     :walked_into_a_bar
   end
 
+  def qux
+    1
+  end
+
+  attribute :qax, :qux
+
+  def qax
+    2
+  end
+
   def not_an_attribute
     42
   end
 end
 
 my_transformer = MyTransformer.new
-my_transformer.transform #=> { :foo => :the_foo, :bar => :walked_into_a_bar }
+my_transformer.transform
+#=> {
+#     :foo => :the_foo,
+#     :bar => :walked_into_a_bar,
+#     :qax => 2,
+#     :qux => 1,
+#   }
 ```
 
 Add an `initialize` that takes some input and then transform it to each attribute in their respective methods and you have a nice transformer object.

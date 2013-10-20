@@ -14,7 +14,23 @@ Install as usual: `gem install windcharger` or add `gem 'windcharger'` to your G
 
 ## Usage
 
-TODO: Write usage instructions here
+Declare methods as attributes by extending `Windcharger::Attributes` and preceding methods with `attribute`:
+
+```ruby
+class MyTransformer
+  extend Windcharger::Attributes
+
+  attribute
+  def foo; end
+
+  attribute
+  def bar; end
+
+  def not_an_attribute; end
+end
+
+MyTransformer.attributes  #=> [:foo, :bar]
+```
 
 ## Contributing
 

@@ -32,6 +32,34 @@ end
 MyTransformer.attributes  #=> [:foo, :bar]
 ```
 
+This isn’t very useful on its own, so include `Windcharger::HashTransformer` to get the `transform` method:
+
+```ruby
+class MyTransformer
+  extend Windcharger::Attributes
+  include Windcharger::HashTransformer
+
+  attribute
+  def foo
+    :the_foo
+  end
+
+  attribute
+  def bar
+    :walked_into_a_bar
+  end
+
+  def not_an_attribute
+    42
+  end
+end
+
+my_transformer = MyTransformer.new
+my_transformer.transform #=> { :foo => :the_foo, :bar => :walked_into_a_bar }
+```
+
+Add an `initialize` that takes some input and then transform it to each attribute in their respective methods and you have a nice transformer object.
+
 ## Contributing
 
 1. Fork it

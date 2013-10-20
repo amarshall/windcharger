@@ -1,5 +1,4 @@
 require 'windcharger/version'
 
-module Windcharger
-  # Your code goes here...
-end
+require 'windcharger/attributes'
+require 'windcharger/hash_transformer'

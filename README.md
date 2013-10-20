@@ -17,6 +17,8 @@ Install as usual: `gem install windcharger` or add `gem 'windcharger'` to your G
 Declare methods as attributes by extending `Windcharger::Attributes` and preceding methods with `attribute`:
 
 ```ruby
+require 'windcharger'
+
 class MyTransformer
   extend Windcharger::Attributes
 
@@ -35,6 +37,8 @@ MyTransformer.attributes  #=> [:foo, :bar]
 This isn’t very useful on its own, so include `Windcharger::HashTransformer` to get the `transform` method:
 
 ```ruby
+require 'windcharger'
+
 class MyTransformer
   extend Windcharger::Attributes
   include Windcharger::HashTransformer

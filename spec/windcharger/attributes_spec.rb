@@ -21,7 +21,7 @@ describe Windcharger::Attributes do
     expect(transformer_class.attributes).to eq [:foo, :bar]
   end
 
-  it "does not add a method not preceded by a call to attribute to the list of attributes" do
+  it "does not add a method to attributes when its def is not preceded by a call to attribute" do
     transformer_class = Class.new do
       extend Windcharger::Attributes
 
@@ -30,7 +30,7 @@ describe Windcharger::Attributes do
     expect(transformer_class.attributes).to eq []
   end
 
-  it "adds a method preceded by a call to attribute to the list of attributes" do
+  it "adds a method to attributes when its def is preceded by a call to attribute" do
     transformer_class = Class.new do
       extend Windcharger::Attributes
 

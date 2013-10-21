@@ -3,7 +3,7 @@ require 'windcharger/hash_transformer'
 
 describe Windcharger::HashTransformer do
   describe "#transform" do
-    it "returns a hash with attribute names and return values from those methods" do
+    it "returns a hash with attribute names as keys and their method results as values" do
       transformer_class = Class.new do
         extend Windcharger::Attributes
         include Windcharger::HashTransformer

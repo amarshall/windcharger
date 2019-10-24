@@ -21,5 +21,19 @@ describe Windcharger::HashTransformer do
         bar: 'colorless green ideas',
       })
     end
+
+    it "does not call private methods" do
+      transformer_class = Class.new do
+        extend Windcharger::Attributes
+        include Windcharger::HashTransformer
+
+        private
+        attribute
+        def foo; 42; end
+      end
+      transformer = transformer_class.new
+
+      expect { transformer.transform }.to raise_error NoMethodError, /private/
+    end
   end
 end

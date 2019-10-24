@@ -1,8 +1,8 @@
 # Windcharger
 
+[![Gem Version](https://badge.fury.io/rb/windcharger.svg)](https://rubygems.org/gems/windcharger)
 [![Build Status](https://secure.travis-ci.org/amarshall/windcharger.svg?branch=master)](https://travis-ci.org/amarshall/windcharger)
 [![Code Climate rating](https://codeclimate.com/github/amarshall/windcharger.svg)](https://codeclimate.com/github/amarshall/windcharger)
-[![Gem Version](https://badge.fury.io/rb/windcharger.svg)](https://rubygems.org/gems/windcharger)
 
 ![Windcharger mascot. He carries powerful magnets in his arms that he can use to manipulate large objects.](https://i.imgur.com/lApzHFP.jpg "He carries powerful magnets in his arms that he can use to manipulate large objects.")
 

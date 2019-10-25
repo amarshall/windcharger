@@ -3,7 +3,7 @@ module Windcharger
     def transform
       self.class.attributes.each_with_object({}) do |attribute, hash|
         hash[attribute] = public_send(attribute)
-      end
+      end.freeze
     end
     alias_method :to_h, :transform
   end

@@ -89,4 +89,4 @@ Add an `initialize` that takes some input and then transform it to each attribut
 
 ## Credits & License
 
-Copyright © 2013 J. Andrew Marshall. License is available in the LICENSE file.
+Copyright © 2013–Present J. Andrew Marshall. License is available in the LICENSE file.

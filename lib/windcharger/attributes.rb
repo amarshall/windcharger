@@ -1,7 +1,7 @@
 module Windcharger
   module Attributes
     def attributes
-      @__attributes || []
+      (@__attributes || []).dup.freeze
     end
 
     private

@@ -61,4 +61,15 @@ describe Windcharger::Attributes do
 
     expect(transformer_class.attributes).to eq [:foo, :qux, :foobar]
   end
+
+  it "does not permit mutating attributes indirectly" do
+    transformer_class = Class.new do
+      extend Windcharger::Attributes
+
+      attribute
+      def foo; end
+    end
+    expect { transformer_class.attributes << :bar }.to raise_error FrozenError
+    expect(transformer_class.attributes).to eq [:foo]
+  end
 end

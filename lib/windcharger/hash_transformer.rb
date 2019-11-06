@@ -7,6 +7,9 @@ module Windcharger
         hash[attribute] = public_send(attribute)
       end.freeze
     end
-    alias_method :to_h, :transform
+
+    def to_h(*args, &block)
+      transform(*args, &block)
+    end
   end
 end

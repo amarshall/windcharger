@@ -37,5 +37,17 @@ describe Windcharger::HashTransformer do
 
       expect { transformer.transform }.to raise_error NoMethodError, /private/
     end
+
+    it "calls overridden transform via to_h" do
+      transformer_class = Class.new do
+        extend Windcharger::Attributes
+        include Windcharger::HashTransformer
+
+        def transform; :foo; end
+      end
+      transformer = transformer_class.new
+
+      expect(transformer.to_h).to eq :foo
+    end
   end
 end

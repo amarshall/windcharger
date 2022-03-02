@@ -3,7 +3,7 @@
 module Windcharger
   module Attributes
     def attributes
-      (@__windcharger_attributes || []).dup.freeze
+      (@__windcharger_attributes ||= []).dup.freeze
     end
 
     private
@@ -22,7 +22,7 @@ module Windcharger
 
     def method_added name
       super
-      return unless @__windcharger_next_is_attribute
+      return unless defined?(@__windcharger_next_is_attribute) && @__windcharger_next_is_attribute
       __windcharger_add_attribute name
       @__windcharger_next_is_attribute = false
     end

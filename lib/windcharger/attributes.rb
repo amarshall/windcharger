@@ -3,13 +3,13 @@
 module Windcharger
   module Attributes
     def attributes
-      (@__attributes || []).dup.freeze
+      (@__windcharger_attributes || []).dup.freeze
     end
 
     private
 
     def __windcharger_add_attribute name
-      (@__attributes ||= []) << name.to_sym
+      (@__windcharger_attributes ||= []) << name.to_sym
     end
 
     def attribute *attributes

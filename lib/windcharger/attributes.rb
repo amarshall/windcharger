@@ -21,6 +21,7 @@ module Windcharger
     end
 
     def method_added name
+      super
       return unless @__windcharger_next_is_attribute
       __windcharger_add_attribute name
       @__windcharger_next_is_attribute = false

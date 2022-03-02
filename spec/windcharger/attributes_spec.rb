@@ -74,4 +74,35 @@ describe Windcharger::Attributes do
     expect { transformer_class.attributes << :bar }.to raise_error FrozenError
     expect(transformer_class.attributes).to eq [:foo]
   end
+
+  it "does not break other method_added hooks" do
+    calls_before = []
+    calls_after = []
+    other_hooker_before = Module.new do
+      define_method :method_added do |name|
+        super name
+        calls_before << name
+      end
+    end
+    other_hooker_after = Module.new do
+      define_method :method_added do |name|
+        super name
+        calls_after << name
+      end
+    end
+
+    Class.new do
+      extend other_hooker_before
+      extend Windcharger::Attributes
+      extend other_hooker_after
+
+      attribute
+      def foo; end
+
+      def bar; end
+    end
+
+    expect(calls_before).to eq %i[foo bar]
+    expect(calls_after).to eq %i[foo bar]
+  end
 end

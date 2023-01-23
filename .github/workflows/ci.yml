@@ -26,3 +26,10 @@ jobs:
           bundler-cache: true
       - name: Run tests
         run: bundle exec rake
+
+  ci_complete:
+    runs-on: ubuntu-latest
+    needs:
+      - test
+    steps:
+      - run: ":"

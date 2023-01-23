@@ -3,7 +3,9 @@
 module Windcharger
   module Attributes
     def attributes
-      (@__windcharger_attributes ||= []).dup.freeze
+      @__windcharger_attributes ||= []
+      super_attrs = superclass.respond_to?(:attributes) ? superclass.attributes : []
+      [*super_attrs, *@__windcharger_attributes].freeze
     end
 
     private

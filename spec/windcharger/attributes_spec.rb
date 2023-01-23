@@ -105,4 +105,20 @@ describe Windcharger::Attributes do
     expect(calls_before).to eq %i[foo bar]
     expect(calls_after).to eq %i[foo bar]
   end
+
+  it 'inherits attributes from its superclass' do
+    parent_class = Class.new do
+      extend Windcharger::Attributes
+
+      attribute
+      def foo; end
+    end
+
+    transformer_class = Class.new(parent_class) do
+      attribute
+      def bar; end
+    end
+
+    expect(transformer_class.attributes).to match_array [:foo, :bar]
+  end
 end
